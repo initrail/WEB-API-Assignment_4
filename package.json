@@ -1,0 +1,26 @@
+{
+  "name": "assignment_3",
+  "version": "1.0.0",
+  "description": "Assignment 3 consists of accessing a database of movies via a node js server.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "Daniel Kalam",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^1.0.3",
+    "bcrypt-nodejs": "0.0.3",
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.4",
+    "dotenv": "^5.0.1",
+    "express": "^4.16.3",
+    "jsonwebtoken": "^8.2.0",
+    "jwt-decode": "^2.2.0",
+    "mongoose": "^5.0.10",
+    "passport": "^0.4.0",
+    "passport-http": "^0.3.0",
+    "password-hash": "^1.2.2"
+  }
+}

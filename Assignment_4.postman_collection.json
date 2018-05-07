@@ -1,0 +1,675 @@
+{
+	"info": {
+		"_postman_id": "0cb7dd3f-6982-4a12-8a8c-bb6c15140d6f",
+		"name": "Assignment_4",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "POST signup",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8af1eb6d-424a-4f03-b5bf-832a7b232985",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"User Successfully Created\", function(){",
+							"    pm.response.to.have.jsonBody('success', 'User successfully created')",
+							"})"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "Name",
+							"value": "Cassandra Maldez",
+							"type": "text"
+						},
+						{
+							"key": "Username",
+							"value": "cassiemal7@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "Password",
+							"value": "sevenMaldez21",
+							"type": "text"
+						},
+						{
+							"key": "Password_Retyped",
+							"value": "sevenMaldez21",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "mymdb.herokuapp.com/signup",
+					"host": [
+						"mymdb",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST signin",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "baa106a0-bf96-48bb-9622-1fa5ba97ca19",
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"postman.setEnvironmentVariable(\"token\", jsonData.token);",
+							"pm.test(\"Signed In.\", function(){",
+							"    pm.response.to.have.jsonBody('success', 'Welcome')",
+							"})"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "Username",
+							"value": "cassiemal7@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "Password",
+							"value": "sevenMaldez21",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "mymdb.herokuapp.com/signin",
+					"host": [
+						"mymdb",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"signin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT addamovie FAILURE",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "69ddfe6e-94ca-45ea-89e8-9900b06c4efd",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Movie Successfully Inserted\", function(){",
+							"    pm.response.to.have.jsonBody('success', 'Movie successfully inserted.')",
+							"})"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"token\":\"{{token}}\",\n\t\"movie\":{\n\t\t\"Title\":\"Harold & Kumar Go to White Castle\",\n\t\t\"Year\":2000,\n\t\t\"Genre\":\"Comedy\",\n\t\t\"Actors\":[\n\t\t\t{\"Actor\":{\"ActorName\":\"John Cho\",\"CharacterName\":\"Harold Lee\"}},\n\t\t\t{\"Actor\":{\"ActorName\":\"Kal Penn\", \"CharacterName\":\"Kumar Patel\"}}\n\t\t]\n\t}\n}"
+				},
+				"url": {
+					"raw": "mymdb.herokuapp.com/movies/insertamovie",
+					"host": [
+						"mymdb",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"movies",
+						"insertamovie"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT addamovie",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d3d71487-f955-4bc0-b0e4-30dbf0570e11",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Movie Successfully Inserted\", function(){",
+							"    pm.response.to.have.jsonBody('success', 'Movie successfully inserted.')",
+							"})"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"token\":\"{{token}}\",\n\t\"movie\":{\n\t\t\"Title\":\"Harold & Kumar Go to White Castle\",\n\t\t\"Year\":2000,\n\t\t\"Genre\":\"Comedy\",\n\t\t\"Actors\":[\n\t\t\t{\"Actor\":{\"ActorName\":\"John Cho\",\"CharacterName\":\"Harold Lee\"}},\n\t\t\t{\"Actor\":{\"ActorName\":\"Kal Penn\", \"CharacterName\":\"Kumar Patel\"}},\n\t\t\t{\"Actor\":{\"ActorName\":\"Neil Patrick Harris\", \"CharacterName\":\"Neil Patrick Harris\"}}\n\t\t]\n\t}\n\t\n}"
+				},
+				"url": {
+					"raw": "mymdb.herokuapp.com/movies/insertamovie",
+					"host": [
+						"mymdb",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"movies",
+						"insertamovie"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET getamovie",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "2456de33-760c-4de3-8a50-c4ad808ff5a0",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Movie Successfully Obtained.\", function(){",
+							"    pm.response.to.have.jsonBody('movies[0].Title', 'Menace II Society')",
+							"})"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "token",
+						"value": "{{token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"token\":\"{{token}}\",\n\t\"movie\":{\n\t\t\"Title\":\"Menace II Society\",\n\t\t\"Year\":1993,\n\t\t\"Genre\":\"Drama\",\n\t\t\"Actors\":[\n\t\t\t{\"Actor\":{\"ActorName\":\"Tyrin Turner\",\"CharacterName\":\"Kaydee Lawson\"}},\n\t\t\t{\"Actor\":{\"ActorName\":\"Jada Pinkett\", \"CharacterName\":\"Ronnie\"}},\n\t\t\t{\"Actor\":{\"ActorName\":\"Larenz Tate\", \"CharacterName\":\"Kevin Anderson\"}}\n\t\t]\n\t}\n\t\n}"
+				},
+				"url": {
+					"raw": "mymdb.herokuapp.com/movies/getamovie?Title=Predators",
+					"host": [
+						"mymdb",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"movies",
+						"getamovie"
+					],
+					"query": [
+						{
+							"key": "Title",
+							"value": "Predators"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET getamovie for updating",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "13859bd3-ed76-41d0-985b-8be1e52d4327",
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"postman.setEnvironmentVariable(\"_id\", jsonData.movies[0]._id);"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "token",
+						"value": "{{token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"token\":\"{{token}}\",\n\t\"movie\":{\n\t\t\"Title\":\"Menace II Society\",\n\t\t\"Year\":1993,\n\t\t\"Genre\":\"Drama\",\n\t\t\"Actors\":[\n\t\t\t{\"Actor\":{\"ActorName\":\"Tyrin Turner\",\"CharacterName\":\"Kaydee Lawson\"}},\n\t\t\t{\"Actor\":{\"ActorName\":\"Jada Pinkett\", \"CharacterName\":\"Ronnie\"}},\n\t\t\t{\"Actor\":{\"ActorName\":\"Larenz Tate\", \"CharacterName\":\"Kevin Anderson\"}}\n\t\t]\n\t}\n\t\n}"
+				},
+				"url": {
+					"raw": "mymdb.herokuapp.com/movies/getamovie?Title=Harold %26 Kumar Go to White Castle",
+					"host": [
+						"mymdb",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"movies",
+						"getamovie"
+					],
+					"query": [
+						{
+							"key": "Title",
+							"value": "Harold %26 Kumar Go to White Castle"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST updateamovie",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "60bd746b-fd02-483c-a516-d1c449d4a25c",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Movie Successfully Updated.\", function(){",
+							"    pm.response.to.have.jsonBody('success', 'Movie successfully updated.')",
+							"})"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "text"
+						},
+						{
+							"key": "_id",
+							"value": "{{_id}}",
+							"type": "text"
+						},
+						{
+							"key": "Year",
+							"value": "2004",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "mymdb.herokuapp.com/movies/updateamovie",
+					"host": [
+						"mymdb",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"movies",
+						"updateamovie"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET getamovie for deleting",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "token",
+						"value": "{{token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"token\":\"{{token}}\",\n\t\"movie\":{\n\t\t\"Title\":\"Menace II Society\",\n\t\t\"Year\":1993,\n\t\t\"Genre\":\"Drama\",\n\t\t\"Actors\":[\n\t\t\t{\"Actor\":{\"ActorName\":\"Tyrin Turner\",\"CharacterName\":\"Kaydee Lawson\"}},\n\t\t\t{\"Actor\":{\"ActorName\":\"Jada Pinkett\", \"CharacterName\":\"Ronnie\"}},\n\t\t\t{\"Actor\":{\"ActorName\":\"Larenz Tate\", \"CharacterName\":\"Kevin Anderson\"}}\n\t\t]\n\t}\n\t\n}"
+				},
+				"url": {
+					"raw": "mymdb.herokuapp.com/movies/getamovie?Title=Harold %26 Kumar Go to White Castle",
+					"host": [
+						"mymdb",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"movies",
+						"getamovie"
+					],
+					"query": [
+						{
+							"key": "Title",
+							"value": "Harold %26 Kumar Go to White Castle"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE deleteamovie",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "acc4c2a8-5a18-4a92-8459-71faa8ab2aa1",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Movie Successfully Deleted.\", function(){",
+							"    pm.response.to.have.jsonBody('success', 'Movie successfully removed.')",
+							"})"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"token\":\"{{token}}\",\n\t\"_id\":\"{{_id}}\"\n}"
+				},
+				"url": {
+					"raw": "mymdb.herokuapp.com/movies/deleteamovie",
+					"host": [
+						"mymdb",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"movies",
+						"deleteamovie"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET a movie without reviews param SUCCESS",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3461170e-6d02-437a-ac0d-4bbb9ccb6c1f",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "{{token}}"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "mymdb.herokuapp.com/movies/getamovie?Title=Titanic",
+					"host": [
+						"mymdb",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"movies",
+						"getamovie"
+					],
+					"query": [
+						{
+							"key": "Title",
+							"value": "Titanic"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET a movie without reviews param FAILURE",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "{{token}}"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "mymdb.herokuapp.com/movies/getamovie?Title=The Big Lebowski",
+					"host": [
+						"mymdb",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"movies",
+						"getamovie"
+					],
+					"query": [
+						{
+							"key": "Title",
+							"value": "The Big Lebowski"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET a movie with reviews param",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "{{token}}"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "mymdb.herokuapp.com/movies/getamovie?Title=Hell or High Water&reviews=true",
+					"host": [
+						"mymdb",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"movies",
+						"getamovie"
+					],
+					"query": [
+						{
+							"key": "Title",
+							"value": "Hell or High Water"
+						},
+						{
+							"key": "reviews",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST review SUCCESS",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					},
+					{
+						"key": "token",
+						"value": "{{token}}"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "MovieId",
+							"value": "5aaeb01e4e7c44048443bb00",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "Quote",
+							"value": "This is an excellent film which brings the Western genre into the 21st century by modernizing it.",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "Rating",
+							"value": "5",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "mymdb.herokuapp.com/movies/writeareview",
+					"host": [
+						"mymdb",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"movies",
+						"writeareview"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST review FAILURE",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "{{token}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "MovieId",
+							"value": "5aaeafd94e7c44048443baf9",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "Quote",
+							"value": "This is not a good movie.",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "Rating",
+							"value": "0",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "mymdb.herokuapp.com/movies/writeareview",
+					"host": [
+						"mymdb",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"movies",
+						"writeareview"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
